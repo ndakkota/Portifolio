@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio</title>
+  <style>
+    :root {
+      --orange: #FF6D29;
+      --darkbrown: #453027;
+      --blackish: #161316;
+      --lightgray: #BABABA;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Neue Montreal', sans-serif;
+      background: linear-gradient(135deg, var(--darkbrown), var(--orange));
+      color: var(--white);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    /* Skills */
+    .skills {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .skill {
+      margin: 20px 0;
+    }
+
+    .skill-name {
+      margin-bottom: 5px;
+    }
+
+    .skill-bar {
+      background: var(--blackish);
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--orange);
+      width: 0;
+      animation: grow 2s forwards;
+    }
+
+    @keyframes grow {
+      from { width: 0; }
+      to { width: var(--level); }
+    }
+
+    /* Projetos */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      color: var(--white);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel img {
+      width: 100%;
+      display: none;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--orange);
+      border: none;
+      color: var(--white);
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .carousel .prev {
+      left: 10px;
+    }
+
+    .carousel .next {
+      right: 10px;
+    }
+ footer {
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:100%;
+      background:rgba(17,17,17,0.6);
+      backdrop-filter: blur(6px);
+      color:silver;
+      text-align:center;
+      padding:5px;
+      font-size:0.7em;
+      border-top:2px solid #fd7e14;
+    }
+</style>
+</head>
+<body>
+  <header>
+    <img src="sua-logo.png" alt="Logo">
+    <h1>Meu Portfólio</h1>
+  </header>
+
+  <h2>Skills</h2>
+  <section class="skills">
+    <div class="skill">
+      <div class="skill-name">HTML</div>
+      <div class="skill-bar">
+        <div class="skill-progress" style="--level: 98%;"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">CSS</div>
+      <div class="skill-bar">
+        <div class="skill-progress" style="--level: 85%;"></div>
+      </div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar">
+        <div class="skill-progress" style="--level: 70%;"></div>
+      </div>
+    </div>
+  </section>
+  <h2>Projetos</h2>
+  <section class="projects">
+    <div class="project-card">
+      <div class="carousel">
+        <img src="projeto1-foto1.png" class="active" alt="Projeto 1 Tela 1">
+        <img src="projeto1-foto2.png" alt="Projeto 1 Tela 2">
+        <img src="projeto1-foto3.png" alt="Projeto 1 Tela 3">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <h3>PharmaAssets</h3>
+       <p>Projeto que começou como uma tabela no Excel, mas rapidamente evoluiu para uma aplicação digital de uso constante. 
+A ideia foi transformar um recurso básico em uma ferramenta prática e interativa, que apoia tanto o estudo quanto a organização diária.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="carousel">
+        <img src="projeto2-foto1.png" class="active" alt="Projeto 2 Tela 1">
+        <img src="projeto2-foto2.PNG" alt="Projeto 2 Tela 2">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <h3>Controle de séries GVT</h3>
+        <p>O treino GVT (German Volume Training) exige disciplina para completar 10 séries intensas, mas é comum se perder no controle durante a execução. 
+Este projeto foi desenvolvido para resolver exatamente esse desafio: uma ferramenta digital que organiza e acompanha cada série, mantendo o foco e evitando confusões. </p>
+    </div>
+
+    <div class="project-card">
+      <div class="carousel">
+        <img src="projeto3-foto1.png" class="active" alt="Projeto 3 Tela 1">
+        <img src="projeto3-foto2.png" alt="Projeto 3 Tela 2">
+        <img src="projeto3-foto3.PNG" alt="Projeto 3 Tela 3">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <h3>PowerFit</h3>
+      <p>Aplicativo desenvolvido para organização e acompanhamento de treinos personalizados, com foco em praticidade, motivação. 
+        O PowerFit combina usabilidade e motivação, oferecendo ao usuário controle total sobre seus treinos, 
+        acompanhamento de progresso e integração com ferramentas do dia a dia.</p>
+    </div>
+  </section>
+  <script>
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const images = carousel.querySelectorAll('img');
+      const prevBtn = carousel.querySelector('.prev');
+      const nextBtn = carousel.querySelector('.next');
+      let current = 0;
+
+      function showImage(index) {
+        images.forEach(img => img.classList.remove('active'));
+        images[index].classList.add('active');
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + images.length) % images.length;
+        showImage(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % images.length;
+        showImage(current);
+      });
+
+      // Auto-play
+      setInterval(() => {
+        current = (current + 1) % images.length;
+        showImage(current);
+      }, 3000);
+    });
+  </script>
+      <footer>
+    <p>© 2026 - Desenvolvido por @ndakkota <i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i></p>
+  </footer>
+</body>
+</html>
