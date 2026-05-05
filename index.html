@@ -168,11 +168,17 @@
       </div>
     </div>
   </section>
+  <!-- Lightbox -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; 
+     width:100%; height:100%; background:rgba(0,0,0,0.8); 
+     justify-content:center; align-items:center; z-index:9999;">
+  <img id="lightbox-img" src="" style="max-width:90%; max-height:90%; border-radius:10px;">
+</div>
   <h2>Projetos</h2>
   <section class="projects">
     <div class="project-card">
       <div class="carousel">
-        <img src="projeto1-foto1.PNG" class="active" alt="Tela inicial">
+        <img src="projeto1-foto1.PNG" class="active" alt="Projeto 1 Tela 1" onclick="openLightbox(this.src)">
         <img src="projeto1-foto2.PNG" alt="Tela para editar ativo">
         <img src="projeto1-foto4.PNG" alt="Tela confirmação de edição de ativo">
         <button class="prev">&#10094;</button>
@@ -239,6 +245,22 @@ Este projeto foi desenvolvido para resolver exatamente esse desafio: uma ferrame
       }, 3000);
     });
   </script>
+  <script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+
+  // Fecha ao clicar no fundo
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').style.display = 'none';
+  });
+
+  // Faz cada imagem abrir no lightbox ao clicar
+  document.querySelectorAll('.carousel img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
+  });
+</script>
       <footer>
     <p>© 2026 - Desenvolvido por @ndakkota <i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i></p>
   </footer>
