@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Portfólio</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --orange: #FF6D29;
-      --darkbrown: #453027;
-      --blackish: #161316;
-      --lightgray: #BABABA;
-      --white: #FFFFFF;
+      --primary: #1B2A41;   /* azul petróleo */
+      --secondary: #3A506B; /* cinza azulado */
+      --accent: #fc793c;    /* laranja da sua logo */
+      --text: #F5F5F5;      /* branco suave */
+    }
+/* Fonte Planetaria */
+    @font-face {
+      font-family: 'Planetaria';
+      src: url('Arista2.0\ Alternate\ light.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
 
     body {
-      font-family: 'Neue Montreal', sans-serif;
-      background: linear-gradient(135deg, var(--darkbrown), var(--orange));
-      color: var(--white);
+      font-family: 'Calibri', sans-serif;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text);
       margin: 0;
-      padding: 0;
+      padding-top: 100px;
     }
 
     header {
@@ -28,39 +36,57 @@
     }
 
     header img {
-      height: 100px;
+      height: 55px;
     }
 
     h2 {
-      margin-top: 40px;
+      margin-top: 20px;
       text-align: center;
     }
 
     /* Skills */
-    .skills {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
+   .skills {
+      max-width: 900px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .skill {
-      margin: 20px 0;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
     }
 
     .skill-name {
-      margin-bottom: 5px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .skill-name i {
+      margin-right: 8px;
+      font-size: 1.2rem;
     }
 
     .skill-bar {
-      background: var(--blackish);
+      background: var(--secondary);
       border-radius: 10px;
       overflow: hidden;
-      height: 20px;
+      height: 12px;
     }
 
     .skill-progress {
       height: 100%;
-      background: var(--orange);
+      background: var(--accent);
       width: 0;
       animation: grow 2s forwards;
     }
@@ -69,7 +95,6 @@
       from { width: 0; }
       to { width: var(--level); }
     }
-
     /* Projetos */
     .projects {
       display: grid;
@@ -126,6 +151,30 @@
     .carousel .next {
       right: 10px;
     }
+     /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #lightbox.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
  footer {
       position:fixed;
       bottom:0;
@@ -137,7 +186,7 @@
       text-align:center;
       padding:5px;
       font-size:0.7em;
-      border-top:2px solid #fd7e14;
+      border-top:2px solid #391db9;
     }
 </style>
 </head>
@@ -150,22 +199,24 @@
   <h2>Skills</h2>
   <section class="skills">
     <div class="skill">
-      <div class="skill-name">HTML</div>
-      <div class="skill-bar">
-        <div class="skill-progress" style="--level: 98%;"></div>
-      </div>
+      <div class="skill-name"><i class="fa-brands fa-html5" style="color:#FF6D29;"></i> HTML</div>
+      <div class="skill-bar"><div class="skill-progress" style="--level: 90%;"></div></div>
     </div>
     <div class="skill">
-      <div class="skill-name">CSS</div>
-      <div class="skill-bar">
-        <div class="skill-progress" style="--level: 85%;"></div>
-      </div>
+      <div class="skill-name"><i class="fa-brands fa-css3-alt" style="color:#2965f1;"></i> CSS</div>
+      <div class="skill-bar"><div class="skill-progress" style="--level: 80%;"></div></div>
     </div>
     <div class="skill">
-      <div class="skill-name">JavaScript</div>
-      <div class="skill-bar">
-        <div class="skill-progress" style="--level: 70%;"></div>
-      </div>
+      <div class="skill-name"><i class="fa-brands fa-js" style="color:#f7df1e;"></i> JavaScript</div>
+      <div class="skill-bar"><div class="skill-progress" style="--level: 70%;"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name"><i class="fa-solid fa-paintbrush" style="color:#31a8ff;"></i> Adobe Photoshop</div>
+      <div class="skill-bar"><div class="skill-progress" style="--level: 75%;"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name"><i class="fa-solid fa-code" style="color:#8e44ad;"></i> Visual Studio</div>
+      <div class="skill-bar"><div class="skill-progress" style="--level: 75%;"></div></div>
     </div>
   </section>
   <!-- Lightbox -->
