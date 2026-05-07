@@ -9,19 +9,19 @@
     :root {
       --primary: #1B2A41;   /* azul petróleo */
       --secondary: #3A506B; /* cinza azulado */
-      --accent: #fc793c;    /* laranja da sua logo */
-      --text: #F5F5F5;      /* branco suave */
+      --accent: #ff8e59;    /* laranja da sua logo */
+      --text: #e9e4e4;      /* branco suave */
     }
 /* Fonte Planetaria */
     @font-face {
       font-family: 'Planetaria';
-      src: url('Arista2.0\ Alternate\ light.ttf') format('truetype');
+      src: url('Arista2.0 Alternate light') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
 
     body {
-      font-family: 'Calibri', sans-serif;
+      font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: var(--text);
       margin: 0;
@@ -30,13 +30,13 @@
 
     header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 50px;
     }
 
     header img {
-      height: 55px;
+      height: 85px;
     }
 
     h2 {
@@ -152,29 +152,29 @@
       right: 10px;
     }
      /* Lightbox */
-    #lightbox {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
+#lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
-    #lightbox.show {
-      display: flex;
-      opacity: 1;
-    }
+#lightbox.show {
+  display: flex !important; /* força a aplicação */
+  opacity: 1;
+}
 
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
  footer {
       position:fixed;
       bottom:0;
@@ -267,51 +267,58 @@ Este projeto foi desenvolvido para resolver exatamente esse desafio: uma ferrame
         acompanhamento de progresso e integração com ferramentas do dia a dia.</p>
     </div>
   </section>
-  <script>
-    document.querySelectorAll('.carousel').forEach(carousel => {
-      const images = carousel.querySelectorAll('img');
-      const prevBtn = carousel.querySelector('.prev');
-      const nextBtn = carousel.querySelector('.next');
-      let current = 0;
+<!-- Lightbox -->
+<div id="lightbox">
+  <img id="lightbox-img" src="">
+</div>
+<script>
+  // Carrossel e Lightbox
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const images = carousel.querySelectorAll('img');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+    let current = 0;
 
-      function showImage(index) {
-        images.forEach(img => img.classList.remove('active'));
-        images[index].classList.add('active');
-      }
+    function showImage(index) {
+      images.forEach(img => img.classList.remove('active'));
+      images[index].classList.add('active');
+    }
 
-      prevBtn.addEventListener('click', () => {
-        current = (current - 1 + images.length) % images.length;
-        showImage(current);
-      });
-
-      nextBtn.addEventListener('click', () => {
-        current = (current + 1) % images.length;
-        showImage(current);
-      });
-
-      // Auto-play
-      setInterval(() => {
-        current = (current + 1) % images.length;
-        showImage(current);
-      }, 3000);
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
     });
-  </script>
-  <script>
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').style.display = 'flex';
-  }
 
-  // Fecha ao clicar no fundo
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').style.display = 'none';
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+
+    // Auto-play
+    setInterval(() => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }, 4000);
   });
 
-  // Faz cada imagem abrir no lightbox ao clicar
+  // Lightbox
+  function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lightbox.classList.add('show');
+  }
+
+  // Fecha ao clicar no fundo escuro
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('show');
+  });
+
+  // Aplica evento de clique em todas as imagens dentro da .carousel
   document.querySelectorAll('.carousel img').forEach(img => {
     img.addEventListener('click', () => openLightbox(img.src));
   });
 </script>
+
       <footer>
     <p>© 2026 - Desenvolvido por @ndakkota <i class="fa-solid fa-paw"></i><i class="fa-solid fa-paw"></i></p>
   </footer>
