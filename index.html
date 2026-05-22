@@ -7,19 +7,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --primary: #0f172a;    /* Azul petróleo profundo e moderno (SaaS/Tech) */
+      --primary: #0f172a;    /* Azul petróleo profundo e moderno */
       --secondary: #1e293b;  /* Cinza azulado para contraste e profundidade */
       --accent: #ff8e59;     /* Laranja marcante da sua logo */
-      --text: #f1f5f9;       /* Branco suave (ótima leitura, não cansa os olhos) */
+      --text: #f1f5f9;       /* Branco suave de alta legibilidade */
       --card-bg: rgba(30, 41, 59, 0.4); /* Base para o efeito de vidro */
-    }
-
-    /* Fonte Planetaria (Caso queira aplicar em títulos específicos futuramente) */
-    @font-face {
-      font-family: 'Planetaria';
-      src: url('Arista2.0 Alternate light') format('truetype');
-      font-weight: normal;
-      font-style: normal;
     }
 
     * {
@@ -27,13 +19,12 @@
     }
 
     body {
-      /* Fontes nativas do sistema: visual limpo, moderno e carregamento instantâneo */
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: radial-gradient(circle at top, var(--secondary), var(--primary));
       background-attachment: fixed;
       color: var(--text);
       margin: 0;
-      padding: 40px 20px 100px 20px;
+      padding: 40px 20px 120px 20px;
       line-height: 1.6;
     }
 
@@ -42,7 +33,7 @@
       justify-content: center;
       align-items: center;
       gap: 20px;
-      margin-bottom: 60px;
+      margin-bottom: 40px; /* Reduzido de 60px para aproximar o conteúdo principal */
       text-align: center;
     }
 
@@ -60,14 +51,13 @@
 
     h2 {
       max-width: 1100px;
-      margin: 60px auto 30px auto;
+      margin: 50px auto 25px auto;
       font-size: 1.8rem;
       position: relative;
       padding-bottom: 10px;
       border-bottom: 2px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Detalhe minimalista em laranja abaixo do título da seção */
     h2::after {
       content: '';
       position: absolute;
@@ -83,7 +73,7 @@
       margin: 0 auto;
     }
 
-    /* Seção de Skills (Habilidades) */
+    /* Seção de Skills */
     .skills {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -92,7 +82,7 @@
 
     .skill {
       background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.05); /* Borda sutil de vidro */
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 12px;
       padding: 20px;
       backdrop-filter: blur(12px);
@@ -129,7 +119,6 @@
 
     .skill-progress {
       height: 100%;
-      /* Gradiente moderno na barra de progresso */
       background: linear-gradient(90deg, var(--accent), #ffaa80);
       width: 0;
       border-radius: 20px;
@@ -174,17 +163,45 @@
     }
 
     .project-card p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #cbd5e1;
-  /* ESSAS 4 LINHAS TRABALHAM JUNTAS: */
-  display: -webkit-box;
-  -webkit-line-clamp: 10;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+      margin: 0;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+    }
 
-    /* Carrossel de Imagens */
+    .project-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .project-links a:hover {
+      opacity: 0.8;
+    }
+
+    .link-primary { color: var(--accent); }
+    .link-secondary { color: #94a3b8; }
+
+    .project-status {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* Carrossel */
     .carousel {
       position: relative;
       overflow: hidden;
@@ -202,7 +219,6 @@
       transition: transform 0.5s ease;
     }
 
-    /* Efeito de zoom sutil ao passar o mouse na imagem ativa */
     .carousel:hover img.active {
       transform: scale(1.03);
     }
@@ -211,7 +227,6 @@
       display: block;
     }
 
-    /* Botões do Carrossel (Estilo Minimalista) */
     .carousel button {
       position: absolute;
       top: 50%;
@@ -227,12 +242,11 @@
       justify-content: center;
       align-items: center;
       backdrop-filter: blur(4px);
-      opacity: 0; /* Invisíveis por padrão */
+      opacity: 0;
       transition: all 0.2s ease;
       z-index: 2;
     }
 
-    /* Botões aparecem apenas quando o usuário foca no card do projeto */
     .project-card:hover .carousel button {
       opacity: 1;
     }
@@ -246,7 +260,50 @@
     .carousel .prev { left: 10px; }
     .carousel .next { right: 10px; }
 
-    /* Lightbox (Visualização expandida) */
+    /* Seção de Contato */
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px auto;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 12px 25px;
+      border-radius: 30px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .contact-card i {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* Efeito Glow aprimorado para o Hover de Contato */
+    .contact-card:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(255, 142, 89, 0.2);
+    }
+
+    .contact-card:hover i {
+      transform: scale(1.1);
+    }
+
+    /* Lightbox */
     #lightbox {
       display: none;
       position: fixed;
@@ -274,7 +331,7 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Rodapé Fixo */
+    /* Rodapé */
     footer {
       position: fixed;
       bottom: 0; left: 0;
@@ -320,6 +377,10 @@
         <div class="skill-bar"><div class="skill-progress" style="--level: 70%;"></div></div>
       </div>
       <div class="skill">
+        <div class="skill-name"><i class="fa-brands fa-python" style="color:#3776AB;"></i> Python</div>
+        <div class="skill-bar"><div class="skill-progress" style="--level: 60%;"></div></div>
+      </div>
+      <div class="skill">
         <div class="skill-name"><i class="fa-solid fa-paintbrush" style="color:#31a8ff;"></i> Adobe Photoshop</div>
         <div class="skill-bar"><div class="skill-progress" style="--level: 75%;"></div></div>
       </div>
@@ -331,41 +392,66 @@
 
     <h2>Projetos</h2>
     <section class="projects">
+      
       <div class="project-card">
         <div class="carousel">
-          <img src="projeto1-foto1.PNG" class="active" alt="Projeto 1 Tela 1">
-          <img src="projeto1-foto2.PNG" alt="Tela para editar ativo">
-          <img src="projeto1-foto3.PNG" alt="Tela confirmação de edição de ativo">
+          <img src="projeto1-foto1.PNG" class="active" alt="PharmaAssets - Tela 1">
+          <img src="projeto1-foto2.PNG" alt="PharmaAssets - Tela 2">
+          <img src="projeto1-foto3.PNG" alt="PharmaAssets - Tela 3">
           <button class="prev">&#10094;</button>
           <button class="next">&#10095;</button>
         </div>
         <h3>PharmaAssets</h3>
         <p>Projeto começou de forma simples, como uma tabela no Excel, mas evoluiu para uma aplicação digital de uso constante. A ideia foi transformar um recurso básico em uma ferramenta prática e interativa, que apoia tanto o estudo quanto a organização diária.</p>
+        <div class="project-links">
+          <span class="project-status"><i class="fa-solid fa-lock"></i> Projeto entregue (Acesso privado)</span>
+        </div>
       </div>
 
       <div class="project-card">
         <div class="carousel">
-          <img src="projeto2-foto1.PNG" class="active" alt="Tela inicial">
-          <img src="projeto2-foto2.PNG" alt="Tela com exercicio e serie">
-          <img src="projeto2-foto3.PNG" alt="Tela de resetar exercicio e serie">
+          <img src="projeto2-foto1.PNG" class="active" alt="Controle de séries GVT - Tela 1">
+          <img src="projeto2-foto2.PNG" alt="Controle de séries GVT - Tela 2">
+          <img src="projeto2-foto3.PNG" alt="Controle de séries GVT - Tela 3">
           <button class="prev">&#10094;</button>
           <button class="next">&#10095;</button>
         </div>
         <h3>Controle de séries GVT</h3>
-        <p>O treino GVT (German Volume Training) exige disciplina para completar 10 séries intensas, mas é comum se perder no controle durante a execução. Este projeto foi desenvolvido para resolver exatamente esse desafio: uma ferramenta digital que organiza e acompanha cada série, mantendo o foco e evitando confusões.</p>
+        <p>O treino GVT (German Volume Training) exige disciplina para completar 10 séries intensas, mas é comum se perder no controle durante a execução. Este projeto foi desenvolvido para resolver exatamente esse desafio: uma ferramenta digital que organiza e acompanha cada série.</p>
+        <div class="project-links">
+          <a href="https://github.com/ndakkota/NOME-DO-REPOSITORIO" target="_blank" class="link-primary"><i class="fa-brands fa-github"></i> Código</a>
+          <a href="https://ndakkota.github.io/NOME-DO-PROJETO" target="_blank" class="link-secondary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir App</a>
+        </div>
       </div>
 
       <div class="project-card">
         <div class="carousel">
-          <img src="projeto3-foto1.PNG" class="active" alt="Projeto 3 Tela 1">
-          <img src="projeto3-foto2.PNG" alt="Projeto 3 Tela 2">
-          <img src="projeto3-foto3.PNG" alt="Projeto 3 Tela 3">
+          <img src="projeto3-foto1.PNG" class="active" alt="PowerFit - Tela 1">
+          <img src="projeto3-foto2.PNG" alt="PowerFit - Tela 2">
+          <img src="projeto3-foto3.PNG" alt="PowerFit - Tela 3">
           <button class="prev">&#10094;</button>
           <button class="next">&#10095;</button>
         </div>
         <h3>PowerFit</h3>
-        <p>Aplicativo desenvolvido para organização e acompanhamento de treinos personalizados, com foco em praticidade e motivação. O PowerFit combina usabilidade e motivação, oferecendo ao usuário controle total sobre seus treinos, acompanhamento de progresso e integração com ferramentas do dia a dia.</p>
+        <p>Aplicativo desenvolvido para organização e acompanhamento de treinos personalizados, com foco em praticidade, motivação. O PowerFit combina usabilidade e motivação, oferecendo ao usuário controle total sobre seus treinos e acompanhamento de progresso.</p>
+        <div class="project-links">
+          <a href="https://github.com/ndakkota/NOME-DO-REPOSITORIO" target="_blank" class="link-primary"><i class="fa-brands fa-github"></i> Código</a>
+          <a href="https://ndakkota.github.io/NOME-DO-PROJETO" target="_blank" class="link-secondary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir App</a>
+        </div>
       </div>
+    </section>
+
+    <h2>Contato</h2>
+    <section class="contact-container">
+      <a href="https://www.linkedin.com/in/suelleny-souza/" target="_blank" class="contact-card">
+        <i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> LinkedIn
+      </a>
+      <a href="https://github.com/ndakkota" target="_blank" class="contact-card">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+      <a href="mailto:suelleny.tsouza@gmail.com" class="contact-card">
+        <i class="fa-solid fa-envelope" style="color: #ea4335;"></i> Email
+      </a>
     </section>
   </div>
 
@@ -391,29 +477,27 @@
       }
 
       prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Impede que o clique no botão ative o Lightbox por acidente
+        e.stopPropagation(); 
         current = (current - 1 + images.length) % images.length;
         showImage(current);
       });
 
       nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Impede que o clique no botão ative o Lightbox por acidente
+        e.stopPropagation(); 
         current = (current + 1) % images.length;
         showImage(current);
       });
 
-      // Transição automática das imagens a cada 5 segundos
       let autoPlay = setInterval(() => {
         current = (current + 1) % images.length;
         showImage(current);
       }, 5000);
 
-      // Pausa a transição automática quando o usuário está lendo/com o mouse sobre o projeto
       const card = carousel.closest('.project-card');
       card.addEventListener('mouseenter', () => clearInterval(autoPlay));
     });
 
-    // Gerenciamento do Lightbox Inteligente
+    // Gerenciamento do Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
@@ -422,12 +506,10 @@
       lightbox.classList.add('show');
     }
 
-    // Fecha a janela ao clicar em qualquer lugar do fundo escuro
     lightbox.addEventListener('click', () => {
       lightbox.classList.remove('show');
     });
 
-    // Vincula o evento de clique para abrir o lightbox em todas as imagens do carrossel
     document.querySelectorAll('.carousel img').forEach(img => {
       img.addEventListener('click', () => openLightbox(img.src));
     });
